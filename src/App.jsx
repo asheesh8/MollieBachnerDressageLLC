@@ -21,7 +21,6 @@ import {
   gallery,
   herd,
   heroPhotos,
-  legacyAssets,
   navItems,
   phone,
   services,
@@ -382,7 +381,10 @@ function ArchiveScreen({ galleryPage, setGalleryPage, onOpen }) {
       <div className="archive-head">
         <div>
           <p className="eyebrow">Complete Photo Archive</p>
-          <h2>Every usable photo, without the endless scroll.</h2>
+          <h2>Original site photography.</h2>
+          <p className="archive-summary">
+            Competition, training, clinic, sales, herd, and about images from Mollie's site.
+          </p>
         </div>
         <div className="pager">
           <button type="button" onClick={() => setGalleryPage((galleryPage - 1 + totalPages) % totalPages)}>
@@ -411,14 +413,6 @@ function ArchiveScreen({ galleryPage, setGalleryPage, onOpen }) {
               <small>{photo.group}</small>
             </span>
           </button>
-        ))}
-      </div>
-
-      <div className="legacy-row" aria-label="Legacy visual assets">
-        {legacyAssets.map((asset) => (
-          <figure key={asset.src}>
-            <img src={asset.src} alt={asset.title} />
-          </figure>
         ))}
       </div>
     </section>

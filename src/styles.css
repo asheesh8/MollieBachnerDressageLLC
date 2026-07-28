@@ -361,10 +361,10 @@ p {
 .hero-photo {
   position: absolute;
   overflow: hidden;
-  border: 0;
+  border: 1px solid rgba(18, 18, 18, 0.16);
   background:
-    linear-gradient(135deg, rgba(255, 250, 240, 0.1), rgba(255, 250, 240, 0)),
-    #161616;
+    linear-gradient(135deg, rgba(18, 18, 18, 0.05), rgba(18, 18, 18, 0.01)),
+    #efe4d2;
   box-shadow: var(--shadow);
   cursor: pointer;
   padding: 0;
@@ -388,8 +388,8 @@ p {
 
 .hero-photo img {
   background:
-    linear-gradient(135deg, rgba(244, 239, 228, 0.12), rgba(244, 239, 228, 0.02)),
-    #161616;
+    linear-gradient(135deg, rgba(18, 18, 18, 0.05), rgba(18, 18, 18, 0.01)),
+    #efe4d2;
 }
 
 .hero-photo span,
@@ -627,7 +627,7 @@ p {
 
 .sales-screen {
   grid-template-rows: auto 1fr;
-  gap: 20px;
+  gap: 16px;
   align-content: center;
   padding-left: clamp(82px, 8vw, 120px);
 }
@@ -638,12 +638,20 @@ p {
 
 .sales-screen h2 {
   max-width: 15ch;
+  margin-bottom: 12px;
+  font-size: clamp(2.7rem, 5.2vw, 4.9rem);
 }
 
 .sales-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
+  min-height: 0;
+}
+
+.sale-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   min-height: 0;
 }
 
@@ -656,8 +664,23 @@ p {
 }
 
 .sale-card img {
-  height: min(35vh, 330px);
-  min-height: 190px;
+  height: min(28vh, 260px);
+  min-height: 150px;
+}
+
+.sale-card div {
+  align-self: end;
+}
+
+.sale-card h3 {
+  margin-bottom: 5px;
+  font-size: clamp(1.05rem, 1.7vw, 1.55rem);
+  line-height: 1;
+}
+
+.sale-card p {
+  font-size: clamp(0.72rem, 0.88vw, 0.86rem);
+  line-height: 1.24;
 }
 
 .sale-card div,
@@ -665,12 +688,17 @@ p {
   padding: 14px;
 }
 
-.sale-card p,
 .herd-card p,
 .about-card p {
   margin-bottom: 0;
   font-size: clamp(0.78rem, 0.95vw, 0.92rem);
   line-height: 1.34;
+}
+
+.sale-card p {
+  margin-bottom: 0;
+  font-size: clamp(0.72rem, 0.88vw, 0.86rem);
+  line-height: 1.24;
 }
 
 .herd-screen {
@@ -764,8 +792,8 @@ p {
 }
 
 .archive-screen {
-  grid-template-rows: auto 1fr auto;
-  gap: 14px;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
   padding-left: clamp(82px, 8vw, 120px);
 }
 
@@ -776,9 +804,20 @@ p {
   justify-content: space-between;
 }
 
+.archive-head > div {
+  min-width: 0;
+}
+
 .archive-head h2 {
-  max-width: 15ch;
-  font-size: clamp(1.9rem, 3.7vw, 3.9rem);
+  max-width: 18ch;
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 3.9vw, 4.2rem);
+}
+
+.archive-summary {
+  max-width: 620px;
+  margin-bottom: 0;
+  color: #4a4640;
 }
 
 .pager {
@@ -821,10 +860,9 @@ p {
 
 .gallery-tile span {
   position: static;
-  display: flex;
+  display: grid;
   gap: 6px;
   align-items: center;
-  justify-content: space-between;
   max-width: none;
   padding: 7px 2px 0;
   background: transparent;
@@ -832,31 +870,22 @@ p {
   text-align: left;
 }
 
+.gallery-tile strong,
+.gallery-tile small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gallery-tile strong {
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
 .gallery-tile small {
   color: var(--orange);
-}
-
-.legacy-row {
-  display: grid;
-  grid-template-columns: 2fr repeat(4, 1fr);
-  gap: 9px;
-  height: 54px;
-}
-
-.legacy-row figure {
-  display: grid;
-  place-items: center;
-  min-width: 0;
-  margin: 0;
-  padding: 7px;
-  border: 1px dashed rgba(18, 18, 18, 0.23);
-  background: rgba(255, 250, 240, 0.68);
-}
-
-.legacy-row img {
-  width: auto;
-  max-height: 34px;
-  object-fit: contain;
+  font-size: 0.58rem;
+  line-height: 1;
 }
 
 .app-footer {
@@ -1282,7 +1311,21 @@ p {
   }
 
   .archive-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
     align-items: start;
+  }
+
+  .archive-head h2 {
+    max-width: 12ch;
+    margin-bottom: 0;
+    font-size: clamp(1.54rem, 7.2vw, 2.08rem);
+    line-height: 0.94;
+  }
+
+  .archive-summary {
+    display: none;
   }
 
   .pager {
@@ -1295,7 +1338,11 @@ p {
   }
 
   .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    align-content: start;
     gap: 6px;
   }
 
@@ -1309,25 +1356,18 @@ p {
     grid-column: span 1;
     grid-row: span 1;
     aspect-ratio: 1;
+    min-width: 0;
+    padding: 4px;
   }
 
   .gallery-tile span {
-    padding: 5px;
-    font-size: 0.5rem;
+    padding: 4px 0 0;
+    font-size: 0.48rem;
+    text-align: center;
   }
 
   .gallery-tile strong {
     display: none;
-  }
-
-  .legacy-row {
-    grid-template-columns: repeat(5, 1fr);
-    height: 34px;
-    gap: 5px;
-  }
-
-  .legacy-row img {
-    max-height: 21px;
   }
 
   .app-footer {

@@ -182,11 +182,3 @@ export const gallery = [
   { src: "/assets/m-endurance.jpg", title: "Endurance", group: "About" },
   { src: "/assets/rodeo.jpg", title: "Rodeo", group: "Archive" },
 ];
-
-export const legacyAssets = [
-  { src: "/assets/molliebachnerdressage.png", title: "Original WordPress logo" },
-  { src: "/assets/mollie-favicon.gif", title: "Original favicon" },
-  { src: "/assets/purple-header.jpg", title: "Legacy purple strip" },
-  { src: "/assets/purple-header-2.jpg", title: "Legacy purple strip alternate" },
-  { src: "/assets/purpletop.jpg", title: "Legacy purple top strip" },
-];
