@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mollie Bachner Dressage offers dressage training, lessons, clinics, and sales support in Vermont and across New England."
+    />
+    <link rel="icon" href="/assets/mollie-favicon.gif" />
+    <title>Mollie Bachner Dressage</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if (location.protocol === "file:") {
+        document.body.style.margin = "0";
+        document.body.style.fontFamily =
+          'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+        document.body.style.background = "#f4efe4";
+        document.body.innerHTML =
+          '<main style="min-height:100vh;display:grid;place-items:center;padding:24px;color:#121212"><section style="max-width:560px;border:2px solid #121212;background:#fffaf0;padding:28px;box-shadow:8px 8px 0 #121212"><h1 style="margin:0 0 12px;font:700 42px/0.95 Georgia,serif">Open the local app server</h1><p style="font-size:18px;line-height:1.45">This React/Vite prototype is served from <strong>http://localhost:5175/</strong>, not the raw file URL.</p><a style="display:inline-block;margin-top:10px;color:#121212;font-weight:900" href="http://localhost:5175/">Open localhost</a></section></main>';
+      }
+    </script>
+    <script type="module">
+      if (location.protocol !== "file:") {
+        import("/src/main.jsx");
+      }
+    </script>
+  </body>
+</html>
