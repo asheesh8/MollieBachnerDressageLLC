@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
+    "dev:api": "node server.js",
+    "dev:full": "sh -c 'node server.js & api=$!; trap \"kill $api\" EXIT; vite --host 0.0.0.0'",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

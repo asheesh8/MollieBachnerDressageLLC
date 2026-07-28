@@ -42,12 +42,29 @@ body {
 }
 
 button,
-a {
+a,
+input,
+select,
+textarea {
   font: inherit;
 }
 
 button {
   color: inherit;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: rgba(255, 250, 240, 0.9);
+  color: var(--ink);
+}
+
+textarea {
+  resize: none;
 }
 
 a {
@@ -338,9 +355,18 @@ p {
   text-transform: uppercase;
 }
 
+.primary-cta:disabled {
+  cursor: progress;
+  opacity: 0.68;
+}
+
 .text-link {
   background: transparent;
   border-bottom: 2px solid currentColor;
+}
+
+.compact-cta {
+  margin-top: 18px;
 }
 
 .photo-constellation {
@@ -791,6 +817,363 @@ p {
   overflow-wrap: anywhere;
 }
 
+.inquiry-screen {
+  grid-template-columns: minmax(320px, 0.58fr) minmax(520px, 1fr);
+  gap: 24px;
+  align-items: center;
+  padding-left: clamp(82px, 8vw, 120px);
+}
+
+.inquiry-copy h2 {
+  max-width: 12.5ch;
+  font-size: clamp(2.35rem, 4.7vw, 5rem);
+}
+
+.intake-notes,
+.admin-stats {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.intake-notes span,
+.admin-stats span {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  align-items: center;
+  min-height: 54px;
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 240, 0.68);
+  color: #37342f;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.intake-notes strong,
+.admin-stats strong {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  background: var(--ink);
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.38rem;
+}
+
+.form-panel,
+.admin-panel,
+.admin-login {
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 240, 0.8);
+}
+
+.form-panel {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.form-panel-head,
+.admin-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  margin-bottom: 14px;
+}
+
+.form-panel-head {
+  justify-content: flex-start;
+}
+
+.form-panel-head svg {
+  flex: 0 0 auto;
+  color: var(--orange);
+}
+
+.form-panel-head h3,
+.admin-toolbar h3 {
+  margin-bottom: 3px;
+}
+
+.form-panel-head p,
+.admin-toolbar p,
+.form-status {
+  margin-bottom: 0;
+  font-size: 0.78rem;
+  line-height: 1.22;
+}
+
+.inquiry-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  min-height: 0;
+}
+
+.inquiry-form label,
+.admin-login label {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.inquiry-form label span,
+.admin-login label span {
+  color: var(--orange);
+  font-size: 0.62rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.inquiry-form input,
+.inquiry-form select,
+.admin-login input,
+.submission-card select {
+  min-height: 38px;
+  padding: 0 10px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.inquiry-form textarea {
+  height: min(14vh, 116px);
+  min-height: 84px;
+  padding: 10px;
+  font-size: 0.84rem;
+  line-height: 1.32;
+}
+
+.full-field {
+  grid-column: 1 / -1;
+}
+
+.checkbox-field {
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-field input {
+  width: 17px;
+  height: 17px;
+}
+
+.checkbox-field span {
+  color: #37342f;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.form-status {
+  color: var(--pewter);
+  font-weight: 850;
+}
+
+.form-status.is-success {
+  color: var(--green);
+}
+
+.form-status.is-error {
+  color: #aa2f19;
+}
+
+.admin-screen {
+  grid-template-columns: minmax(280px, 0.42fr) minmax(560px, 1fr);
+  gap: 22px;
+  align-items: stretch;
+  padding-left: clamp(82px, 8vw, 120px);
+}
+
+.admin-side {
+  align-self: center;
+  min-width: 0;
+}
+
+.admin-side h2 {
+  max-width: 10ch;
+  font-size: clamp(2.25rem, 4.6vw, 4.8rem);
+}
+
+.admin-login {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px;
+}
+
+.admin-login .primary-cta {
+  justify-content: center;
+}
+
+.admin-stats {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.admin-stats span {
+  grid-template-columns: 1fr;
+  gap: 5px;
+  justify-items: center;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.admin-stats strong {
+  width: 54px;
+  height: 42px;
+}
+
+.admin-panel {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  min-height: 0;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.admin-buttons {
+  display: flex;
+  gap: 7px;
+}
+
+.admin-buttons button,
+.admin-filter button {
+  display: grid;
+  place-items: center;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  background: var(--paper-soft);
+  cursor: pointer;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.admin-buttons button {
+  width: 38px;
+}
+
+.admin-filter {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+  margin-bottom: 11px;
+}
+
+.admin-filter button {
+  padding: 0 6px;
+  font-size: 0.62rem;
+}
+
+.admin-filter button.is-active,
+.admin-filter button:hover,
+.admin-buttons button:hover {
+  background: var(--ink);
+  color: var(--paper-soft);
+}
+
+.submission-list {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.submission-card {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: var(--paper-soft);
+}
+
+.submission-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 128px;
+  gap: 10px;
+  align-items: start;
+}
+
+.submission-main span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--orange);
+  font-size: 0.62rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.submission-main h3 {
+  margin-bottom: 4px;
+  font-size: clamp(1rem, 1.35vw, 1.28rem);
+}
+
+.submission-main p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-bottom: 0;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.8rem;
+  line-height: 1.27;
+}
+
+.submission-card dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin: 0;
+}
+
+.submission-card div {
+  min-width: 0;
+}
+
+.submission-card dt {
+  color: var(--pewter);
+  font-size: 0.56rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.submission-card dd {
+  overflow: hidden;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.empty-state {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  min-height: 100%;
+  padding: 22px;
+  border: 1px dashed rgba(18, 18, 18, 0.3);
+  color: var(--pewter);
+  text-align: center;
+}
+
+.empty-state strong {
+  color: var(--ink);
+}
+
 .archive-screen {
   grid-template-rows: auto 1fr;
   gap: 18px;
@@ -890,6 +1273,7 @@ p {
 
 .app-footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   min-height: 24px;
@@ -900,6 +1284,19 @@ p {
 
 .app-footer a {
   color: var(--ink);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-footer button {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 950;
 }
 
 .lightbox {
@@ -953,7 +1350,9 @@ p {
   .service-screen,
   .lessons-screen,
   .herd-screen,
-  .about-screen {
+  .about-screen,
+  .inquiry-screen,
+  .admin-screen {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -963,6 +1362,8 @@ p {
   .sales-screen,
   .herd-screen,
   .about-screen,
+  .inquiry-screen,
+  .admin-screen,
   .archive-screen {
     padding-left: 74px;
   }
@@ -995,6 +1396,14 @@ p {
 
   .about-card {
     grid-template-columns: 1fr;
+  }
+
+  .inquiry-screen {
+    grid-template-columns: minmax(260px, 0.52fr) minmax(420px, 1fr);
+  }
+
+  .admin-screen {
+    grid-template-columns: minmax(240px, 0.45fr) minmax(420px, 1fr);
   }
 
   .gallery-grid {
@@ -1043,6 +1452,8 @@ p {
   .sales-screen,
   .herd-screen,
   .about-screen,
+  .inquiry-screen,
+  .admin-screen,
   .archive-screen {
     padding: 48px 12px 12px 58px;
   }
@@ -1054,6 +1465,8 @@ p {
   h2,
   .service-copy h2,
   .contact-panel h2,
+  .inquiry-copy h2,
+  .admin-side h2,
   .archive-head h2 {
     font-size: clamp(1.68rem, 9vw, 2.7rem);
   }
@@ -1143,7 +1556,9 @@ p {
   .service-screen,
   .lessons-screen,
   .herd-screen,
-  .about-screen {
+  .about-screen,
+  .inquiry-screen,
+  .admin-screen {
     grid-template-columns: 1fr;
     gap: 8px;
   }
@@ -1310,6 +1725,171 @@ p {
     font-size: 0.62rem;
   }
 
+  .compact-cta {
+    min-height: 34px;
+    margin-top: 8px;
+  }
+
+  .inquiry-screen {
+    grid-template-rows: auto 1fr;
+  }
+
+  .inquiry-copy p:not(.eyebrow),
+  .intake-notes {
+    display: none;
+  }
+
+  .inquiry-copy h2,
+  .admin-side h2 {
+    max-width: 18ch;
+    margin-bottom: 0;
+    font-size: 1.48rem;
+    line-height: 0.96;
+  }
+
+  .form-panel,
+  .admin-panel {
+    padding: 9px;
+  }
+
+  .form-panel-head {
+    margin-bottom: 8px;
+  }
+
+  .form-panel-head p {
+    display: none;
+  }
+
+  .form-panel-head h3,
+  .admin-toolbar h3 {
+    font-size: 0.9rem;
+  }
+
+  .inquiry-form {
+    gap: 6px;
+  }
+
+  .inquiry-form label span,
+  .admin-login label span {
+    font-size: 0.5rem;
+  }
+
+  .inquiry-form input,
+  .inquiry-form select,
+  .admin-login input,
+  .submission-card select {
+    min-height: 30px;
+    padding: 0 7px;
+    font-size: 0.64rem;
+  }
+
+  .inquiry-form textarea {
+    height: 58px;
+    min-height: 58px;
+    padding: 7px;
+    font-size: 0.64rem;
+    line-height: 1.18;
+  }
+
+  .checkbox-field {
+    gap: 6px;
+  }
+
+  .checkbox-field span,
+  .form-status {
+    font-size: 0.56rem;
+  }
+
+  .form-actions {
+    gap: 8px;
+  }
+
+  .admin-screen {
+    grid-template-rows: auto 1fr;
+  }
+
+  .admin-side p:not(.eyebrow),
+  .admin-stats {
+    display: none;
+  }
+
+  .admin-login {
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+    margin-top: 7px;
+    padding: 8px;
+  }
+
+  .admin-login .primary-cta {
+    min-height: 30px;
+    padding: 0 9px;
+    font-size: 0.58rem;
+  }
+
+  .admin-panel {
+    min-height: 0;
+  }
+
+  .admin-toolbar {
+    margin-bottom: 7px;
+  }
+
+  .admin-filter {
+    gap: 4px;
+    margin-bottom: 7px;
+  }
+
+  .admin-filter button {
+    min-height: 28px;
+    padding: 0 3px;
+    font-size: 0.48rem;
+  }
+
+  .admin-buttons button {
+    width: 30px;
+    min-height: 30px;
+  }
+
+  .submission-list {
+    gap: 6px;
+  }
+
+  .submission-card {
+    gap: 6px;
+    padding: 7px;
+  }
+
+  .submission-main {
+    grid-template-columns: minmax(0, 1fr) 92px;
+    gap: 6px;
+  }
+
+  .submission-main span {
+    font-size: 0.48rem;
+  }
+
+  .submission-main h3 {
+    font-size: 0.76rem;
+  }
+
+  .submission-main p {
+    font-size: 0.58rem;
+    -webkit-line-clamp: 1;
+  }
+
+  .submission-card dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .submission-card dt {
+    font-size: 0.46rem;
+  }
+
+  .submission-card dd {
+    font-size: 0.55rem;
+  }
+
   .archive-head {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -1374,6 +1954,10 @@ p {
     min-height: 18px;
     font-size: 0.58rem;
   }
+
+  .app-footer span {
+    display: none;
+  }
 }
 
 @media (max-height: 720px) and (min-width: 701px) {
@@ -1387,7 +1971,9 @@ p {
   }
 
   h2,
-  .service-copy h2 {
+  .service-copy h2,
+  .inquiry-copy h2,
+  .admin-side h2 {
     font-size: clamp(2rem, 4.4vw, 4.2rem);
   }
 
