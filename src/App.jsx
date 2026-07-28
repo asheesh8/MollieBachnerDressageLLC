@@ -118,6 +118,15 @@ function App() {
     setMobileNavOpen(false);
   };
 
+  const showLightboxPhoto = (direction) => {
+    if (!activePhoto) return;
+
+    const source = gallery.some((photo) => photo.src === activePhoto.src) ? gallery : heroPhotos;
+    const index = source.findIndex((photo) => photo.src === activePhoto.src);
+    const nextIndex = (index + direction + source.length) % source.length;
+    setActivePhoto(source[nextIndex]);
+  };
+
   const updateInquiryField = (field, value) => {
     setInquiryForm((current) => ({ ...current, [field]: value }));
   };
@@ -552,6 +561,24 @@ function App() {
             onClick={() => setActivePhoto(null)}
           >
             <X size={23} />
+          </button>
+          <button
+            className="icon-button lightbox-nav lightbox-prev"
+            type="button"
+            title="Previous photo"
+            aria-label="Previous photo"
+            onClick={() => showLightboxPhoto(-1)}
+          >
+            <ArrowLeft size={22} />
+          </button>
+          <button
+            className="icon-button lightbox-nav lightbox-next"
+            type="button"
+            title="Next photo"
+            aria-label="Next photo"
+            onClick={() => showLightboxPhoto(1)}
+          >
+            <ArrowRight size={22} />
           </button>
           <img src={activePhoto.src} alt={activePhoto.title} />
           <div>
