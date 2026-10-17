@@ -1,3 +1,7 @@
+// Production server: serves the built Vite app from dist/ and a small JSON API
+// for the inquiry form and the admin inbox. Inquiries are kept in a JSON file
+// under DATA_DIR, so this needs a host with a persistent disk (not a
+// serverless platform).
 import { createServer } from "node:http";
 import { randomUUID, timingSafeEqual } from "node:crypto";
 import { mkdir, readFile, rename, stat, writeFile } from "node:fs/promises";
@@ -8,6 +12,8 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT || 8787);
 const isProduction = process.env.NODE_ENV === "production";
+// No fallback in production: without ADMIN_PASSWORD the admin API refuses
+// every request instead of running with a guessable default.
 const adminPassword = process.env.ADMIN_PASSWORD || (isProduction ? "" : "mollie-admin");
 const dataDir = path.resolve(process.env.DATA_DIR || path.join(__dirname, "data"));
 const dataFile = path.join(dataDir, "inquiries.json");
@@ -86,6 +92,8 @@ async function readInquiries() {
   }
 }
 
+// Write to a temp file, then rename: the rename is atomic, so a crash mid-write
+// can never leave a half-written inquiries.json behind.
 async function writeInquiries(inquiries) {
   await mkdir(dataDir, { recursive: true });
   const temporaryFile = `${dataFile}.${Date.now()}-${randomUUID()}.tmp`;
@@ -109,6 +117,8 @@ function sendText(response, statusCode, text, contentType = "text/plain; charset
   response.end(text);
 }
 
+// The admin UI sends the password as a Bearer token. The X-Admin-Key header and
+// ?key= query are also accepted; avoid ?key= since URLs end up in history and logs.
 function getAdminKey(request, url) {
   const header = request.headers.authorization || "";
   if (header.startsWith("Bearer ")) return header.slice("Bearer ".length);
